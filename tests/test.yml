@@ -1,0 +1,27 @@
+---
+ - hosts: all
+   become: yes
+   serial: 2500
+   gather_facts: no
+   tasks:
+    - name: check version
+      shell: whoami
+      # when: ansible_ssh_user | regex_search('root')
+      tags: whoami
+
+    - name: get url
+      get_url: url=http://www.baidu.com dest=/tmp/
+
+    - name: copy
+      copy: src=test.yml dest=/tmp/
+
+    - name: file
+      file: path=/tmp/nginx.conf state=touch
+
+    - name: usage {{ username }}
+      shell: pwd
+      when: hostname is defined
+
+    - name: ppp
+      shell: hostname
+      tags: named
