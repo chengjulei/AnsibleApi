@@ -102,8 +102,8 @@ celerybeat.pid
 *.sage.py
 
 # IED
-# .idea
-# .vscode
+.idea
+.vscode
 
 
 # Environments
